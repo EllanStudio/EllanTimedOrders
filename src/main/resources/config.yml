@@ -1,0 +1,247 @@
+server-id: spawn
+coordinator: true
+auto-publish:
+  enabled: true
+  interval-seconds: 1800
+  station-weights:
+    COOKED: 25
+    TAVERN: 15
+    GREENHOUSE: 25
+    CASINO_BAR: 20
+    FURNITURE: 15
+max-concurrent-orders: 3
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ''
+  timeout-millis: 2000
+
+currency-id: ellan_coin
+offer-seconds: 300
+
+npcs:
+  cooked: b1ff0ba1-b161-44ee-baa8-5b4f8739cedf
+  tavern: b5bdf33f-97db-44fe-bfce-3f6800aff0b7
+  greenhouse: 7a52c603-6bf9-46db-9558-a64a09b86383
+  casino-bar: 1f40dfa7-356f-49de-9cfd-3640fe8ecd3b
+  furniture: e0e9a82e-5131-4be7-9f84-9b6412d335b3
+
+tasks:
+  steamed_buns:
+    name: 馒头
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:mantou
+    quantity: 16
+    reward: 560
+    duration-seconds: 600
+    icon: BREAD
+
+  baozi:
+    name: 包子
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:baozi
+    quantity: 12
+    reward: 620
+    duration-seconds: 720
+    icon: COOKED_PORKCHOP
+
+  sweet_and_sour_pork:
+    name: 糖醋里脊
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:sweet_and_sour_pork
+    quantity: 8
+    reward: 880
+    duration-seconds: 900
+    icon: COOKED_PORKCHOP
+
+  braised_fish:
+    name: 红烧鱼
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: cook:braised_fish
+    quantity: 4
+    reward: 760
+    duration-seconds: 900
+    icon: COOKED_COD
+
+  beer:
+    name: 啤酒
+    kind: BREW
+    station: TAVERN
+    item-id: beer
+    quantity: 12
+    reward: 900
+    duration-seconds: 900
+    minimum-score: 0.0
+    icon: POTION
+
+  cidre:
+    name: 苹果酒
+    kind: BREW
+    station: TAVERN
+    item-id: cidre
+    quantity: 8
+    reward: 840
+    duration-seconds: 1080
+    minimum-score: 0.0
+    icon: POTION
+
+  mead:
+    name: 蜂蜜酒
+    kind: BREW
+    station: TAVERN
+    item-id: mead
+    quantity: 8
+    reward: 960
+    duration-seconds: 1200
+    minimum-score: 0.0
+    icon: HONEY_BOTTLE
+
+  quality_whiskey:
+    name: 三星威士忌
+    kind: BREW
+    station: TAVERN
+    item-id: whiskey
+    quantity: 6
+    reward: 1350
+    duration-seconds: 1200
+    minimum-score: 0.6
+    icon: POTION
+
+  fried_egg_order:
+    name: 煎蛋
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:fried_egg
+    quantity: 18
+    reward: 520
+    duration-seconds: 600
+    icon: EGG
+
+  spring_roll_order:
+    name: 炸春卷
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: cook:fried_spring_roll
+    quantity: 12
+    reward: 720
+    duration-seconds: 720
+    icon: BAKED_POTATO
+
+  hot_dry_noodles_order:
+    name: 热干面
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:hot_dry_noodles
+    quantity: 10
+    reward: 850
+    duration-seconds: 900
+    icon: BOWL
+
+  dongpo_pork_order:
+    name: 东坡肉
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: cook:dongpo_pork
+    quantity: 6
+    reward: 980
+    duration-seconds: 1080
+    icon: COOKED_PORKCHOP
+
+  qingtuan_order:
+    name: 青团
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: kaleidoscopecookery:qingtuan
+    quantity: 16
+    reward: 640
+    duration-seconds: 720
+    icon: SLIME_BALL
+
+  fondant_pie_order:
+    name: 翻糖派
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: cook:fondant_pie
+    quantity: 8
+    reward: 920
+    duration-seconds: 900
+    icon: PUMPKIN_PIE
+
+  pitaya_cupcake_order:
+    name: 火龙果纸杯蛋糕
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: customcrops:pitaya_cupcake
+    quantity: 12
+    reward: 840
+    duration-seconds: 900
+    icon: CAKE
+
+  grape_cake_order:
+    name: 葡萄蛋糕
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: customcrops:grape_cake
+    quantity: 8
+    reward: 880
+    duration-seconds: 900
+    icon: CAKE
+
+  mochi_order:
+    name: 麻薯
+    kind: CRAFTENGINE
+    station: COOKED
+    item-id: customcrops:mochi
+    quantity: 12
+    reward: 760
+    duration-seconds: 720
+    icon: COOKIE
+
+  wheatbeer_order:
+    name: 一星及以上小麦啤酒
+    kind: BREW
+    station: TAVERN
+    item-id: wheatbeer
+    quantity: 10
+    reward: 1050
+    duration-seconds: 1080
+    minimum-score: 0.2
+    icon: POTION
+
+  darkbeer_order:
+    name: 二星及以上黑啤酒
+    kind: BREW
+    station: TAVERN
+    item-id: darkbeer
+    quantity: 8
+    reward: 1120
+    duration-seconds: 1200
+    minimum-score: 0.4
+    icon: POTION
+
+  sweet_apple_mead_order:
+    name: 二星及以上甜苹果蜂蜜酒
+    kind: BREW
+    station: TAVERN
+    item-id: ap_mead
+    quantity: 6
+    reward: 1200
+    duration-seconds: 1200
+    minimum-score: 0.4
+    icon: HONEY_BOTTLE
+
+  wine_order:
+    name: 三星及以上红酒
+    kind: BREW
+    station: TAVERN
+    item-id: wine
+    quantity: 6
+    reward: 1450
+    duration-seconds: 1500
+    minimum-score: 0.6
+    icon: POTION

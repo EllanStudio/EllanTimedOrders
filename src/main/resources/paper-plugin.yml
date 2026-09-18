@@ -1,0 +1,29 @@
+name: EllanTimedOrders
+version: '0.4.0'
+main: cn.ellan.timedorders.EllanTimedOrdersPlugin
+api-version: '1.21'
+description: 艾尔岚跨服限时随机订单系统
+authors: [EllanServer]
+folia-supported: false
+dependencies:
+  server:
+    CraftEngine:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    ExcellentEconomy:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    TheBrewingProject:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    FancyNpcs:
+      load: BEFORE
+      required: true
+      join-classpath: true
+permissions:
+  ellanorders.admin:
+    description: 打开限时订单管理面板并发布任务
+    default: op
