@@ -14,12 +14,21 @@ java {
 repositories {
     mavenCentral()
     maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://repo.fancyinnovations.com/releases' }
+    maven { url = 'https://repo.breweryteam.dev/releases' }
+    maven { url = 'https://repo.momirealms.net/releases/' }
+    maven { url = 'https://repo.nightexpressdev.com/releases' }
 }
 
 dependencies {
     def paperApiVersion = providers.gradleProperty('paperApiVersion').orElse('26.3.build.157-beta').get()
 
     compileOnly "io.papermc.paper:paper-api:${paperApiVersion}"
+    compileOnly 'de.oliver:FancyNpcs:2.9.2'
+    compileOnly 'dev.jsinco.brewery:thebrewingproject-bukkit:3.3.3'
+    compileOnly 'net.momirealms:craft-engine-bukkit:0.0.67'
+    compileOnly 'net.momirealms:craft-engine-core:0.0.67'
+    compileOnly 'su.nightexpress.excellenteconomy:ExcellentEconomy:2.8.0'
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 
