@@ -48,7 +48,7 @@
 
 ## 环境要求
 
-- Paper 26.x
+- Paper 26.3 (build target: `26.3.build.157-beta`)
 - Java 25
 - Redis
 - CraftEngine
