@@ -17,7 +17,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'io.papermc.paper:paper-api:26.3.build.157-beta'
+    def paperApiVersion = providers.gradleProperty('paperApiVersion').orElse('26.3.build.157-beta').get()
+
+    compileOnly "io.papermc.paper:paper-api:${paperApiVersion}"
     compileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 
