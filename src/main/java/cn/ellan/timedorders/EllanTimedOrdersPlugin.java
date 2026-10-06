@@ -213,8 +213,7 @@ public final class EllanTimedOrdersPlugin extends JavaPlugin implements Listener
         }
         for (Task task : tasks.values()) {
             if (task.kind() == Task.Kind.CRAFTENGINE) {
-                boolean present = BukkitItemManager.instance().getItemDefinition(
-                        net.momirealms.craftengine.core.util.Key.of(task.itemId())).isPresent();
+                boolean present = hasCraftEngineItem(task.itemId());
                 if (!present) {
                     getLogger().warning("CraftEngine item not found for task " + task.id() + ": " + task.itemId());
                 }
@@ -234,6 +233,32 @@ public final class EllanTimedOrdersPlugin extends JavaPlugin implements Listener
         validateNpc("Greenhouse", greenhouseNpcId);
         validateNpc("Casino-bar", casinoBarNpcId);
         validateNpc("Furniture", furnitureNpcId);
+    }
+
+    /**
+     * CraftEngine renamed its item lookup method between API generations.
+     * Reflection keeps the integration linkable with the older server plugin
+     * while compiling against the published API used by the 26.3 build.
+     */
+    private boolean hasCraftEngineItem(String itemId) {
+        Object manager = BukkitItemManager.instance();
+        net.momirealms.craftengine.core.util.Key key =
+                net.momirealms.craftengine.core.util.Key.of(itemId);
+        for (String methodName : new String[] {"getCustomItem", "getItemDefinition"}) {
+            try {
+                java.lang.reflect.Method method = manager.getClass().getMethod(
+                        methodName, net.momirealms.craftengine.core.util.Key.class);
+                Object result = method.invoke(manager, key);
+                return result instanceof java.util.Optional<?> optional && optional.isPresent();
+            } catch (NoSuchMethodException ignored) {
+                // Try the other API generation.
+            } catch (ReflectiveOperationException exception) {
+                getLogger().log(Level.FINE, "CraftEngine item lookup failed for " + itemId, exception);
+                return false;
+            }
+        }
+        getLogger().warning("CraftEngine item lookup API is unavailable; cannot validate " + itemId);
+        return false;
     }
 
     private void validateNpc(String label, String npcId) {
